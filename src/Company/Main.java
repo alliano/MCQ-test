@@ -1,16 +1,16 @@
 package Company;
 import Company.object.Questions;
+
+import java.io.IOException;
 import java.util.Scanner;
 
 public class Main{
     public static Scanner terminalInput = new Scanner(System.in);
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
         System.out.print("\ninput your name : ");
         String name = terminalInput.nextLine();
-        
         System.out.println("\nwelcome " + name+"\n");
-        
-        System.out.println("***List Module:***\n");
+        System.out.println("***List Module***\n");
 
         System.out.println("1)Basic java");
         System.out.println("2)OOP java");
@@ -40,8 +40,17 @@ public class Main{
                 System.out.println("please choose 1 beetwen 4");
                break;
        }
-     }
-
+                // isnext = userChooseWrong("pelase choose betwen 1 until 4");
+       }
+    //  public static boolean userChooseWrong(String message){
+    //      System.out.println(message);
+    //      String inputUser = terminalInput.nextLine();
+    //      while(inputUser != "1" || inputUser != "2" || inputUser != "3" || inputUser != "4"){
+    //         System.out.println(message);
+    //         inputUser = terminalInput.nextLine(); 
+    //      }
+    //      return true;
+    //  }
     public static void clearSc(){
         try{
             if (System.getProperty("os.name").contains("windows")) {
