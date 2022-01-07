@@ -4,6 +4,7 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.StringTokenizer;
 
@@ -31,16 +32,18 @@ public class Questions {
         }
         String data = bufferedReader.readLine();
         StringTokenizer strToken = new StringTokenizer(data, ",");
-
+        int index = 0;
         while (data != null) {
-            System.out.println(strToken.nextToken());
-            System.out.println(strToken.nextToken());
-            System.out.println(strToken.nextToken());
-            System.out.println(strToken.nextToken());
-
-
+            index++;
             strToken = new StringTokenizer(data, ",");
             data = bufferedReader.readLine();
+            System.out.println("\n"+strToken.nextToken());
+            System.out.println(strToken.nextToken());
+            System.out.println(strToken.nextToken());
+            System.out.println(strToken.nextToken()+"\n");
+            
+            // System.out.println(Arrays.toString(this.returnQuestions.toArray()));
+            
         }
         bufferedReader.close();
     }
