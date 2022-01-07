@@ -4,7 +4,6 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import java.util.StringTokenizer;
 
@@ -20,7 +19,7 @@ public class Questions {
         data(this.returnQuestions);
     }
 
-    public void getQuestion() throws IOException {
+    private void getQuestion() throws IOException {
         FileReader fileReader;
         BufferedReader bufferedReader;
         try {
@@ -34,18 +33,20 @@ public class Questions {
         StringTokenizer strToken = new StringTokenizer(data, ",");
         int index = 0;
         while (data != null) {
-            index++;
             strToken = new StringTokenizer(data, ",");
             data = bufferedReader.readLine();
-            System.out.println("\n"+strToken.nextToken());
-            System.out.println(strToken.nextToken());
-            System.out.println(strToken.nextToken());
-            System.out.println(strToken.nextToken()+"\n");
-            
-            // System.out.println(Arrays.toString(this.returnQuestions.toArray()));
-            
+            this.returnQuestions.get(index).add(strToken.nextToken());
+            this.returnQuestions.get(index).add(strToken.nextToken());
+            this.returnQuestions.get(index).add(strToken.nextToken());
+            this.returnQuestions.get(index).add(strToken.nextToken());
+            index++;
         }
         bufferedReader.close();
+    }
+
+    public List<List<String>> getAllquestions()throws IOException {
+        getQuestion();
+        return this.returnQuestions;
     }
     public void data(List<List<String>> questions) {
         for (int i = 0; i <= 10; i++) {
