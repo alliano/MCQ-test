@@ -4,15 +4,15 @@ import java.io.IOException;
 
 public class Main extends Components{
   
-    public Main(String questions) {
+    public Main(String questions) throws IOException {
         super(questions);
-        //TODO Auto-generated constructor stub
     }
     public static void main(String[] args) throws IOException {
         Components components = new Components("");
-        components.getName();
+        components.setName();
         components.listModule();
         components.switchChoose();
+       
       
     }
     public static void clearSc(){

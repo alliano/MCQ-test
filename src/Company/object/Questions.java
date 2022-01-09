@@ -13,10 +13,10 @@ public class Questions {
     private List<List<String>> returnQuestions;
     private static String path = System.getProperty("user.dir");
 
-    public Questions(String questions) {
+    public Questions(String questions) throws IOException {
         this.question = questions;
         this.returnQuestions = new ArrayList<>();
-        data(this.returnQuestions);
+        data();
     }
 
     private void getQuestion() throws IOException {
@@ -39,6 +39,7 @@ public class Questions {
             this.returnQuestions.get(index).add(strToken.nextToken());
             this.returnQuestions.get(index).add(strToken.nextToken());
             this.returnQuestions.get(index).add(strToken.nextToken());
+            this.returnQuestions.get(index).add(strToken.nextToken());
             index++;
         }
         bufferedReader.close();
@@ -48,9 +49,21 @@ public class Questions {
         getQuestion();
         return this.returnQuestions;
     }
-    public void data(List<List<String>> questions) {
-        for (int i = 0; i <= 10; i++) {
+    public void data() throws IOException {
+        FileReader fileReader;
+        BufferedReader bufferedReader;
+        try {
+            fileReader = new FileReader(path + "/src/Company/questions/" + this.question + ".csv");
+            bufferedReader = new BufferedReader(fileReader);
+        } catch (Exception e) {
+            System.err.println("lagi error mas :v " + e);
+            return;
+        }
+        String data = bufferedReader.readLine();
+        while (data != null) {
+            data = bufferedReader.readLine();
             this.returnQuestions.add(new ArrayList<>());
         }
+        bufferedReader.close();
     }
 }
