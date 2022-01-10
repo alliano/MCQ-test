@@ -1,10 +1,10 @@
-1)The java sintax for compailing programs file is?,a. java*,b. javac*,c. javaclass,d. javax
+1)The java sintax for compailing programs file is?,a. java,b. javac*,c. javaclass,d. javax
 2)The system that is use full for sendining output to the screen is?,a. System.in,b. System.err,c. System.out*,d. System.exit
 3)The compilation result of the java file is?,a. BAK file,b. File bytecode*,c. file excutable,d. file class
 4)The function of the System.in method in java is?,a. Sending output to screen,b. Handle reading from keyboard*,c. Showing error message,d. Handling an object
-5)The java architecture used for wireless devices/mobile devices, is called?,a. J2SE,b. J2ME*,c. J2EE,d. J2EM
-6)The method used to convert a string value to an integer in Java is?,a. parseInt( )*,b. converseInt( ),c. Cint( ),d. ChangeInt( )
-7)The following includes primitive data types are?,a. Boolean,b. character,c. byte*,d. Double
-8)The following includes reference data types are?,a. float,b. Character*,c. short,d. int
-9)The keyword used to create a fixed and immutable value is?,a. protected,b. public,c. final*,d. privat
-10)The method used to compare two string data is?,a. equal()*,b. concat(),c. length(),d. equals()
+5)The java architecture used for wireless devices/mobile devices is called?,a. J2SE,b. J2ME*,c. J2EE,d. J2EM
+6)which of the following functions to display on the screen?,a. System.out.print();*,b. System.out.println();*,c. Echo,d. $var_dump();
+7)which of the following is an arithmetic operator?,a. + -*,b. %*,c. !=,d. ===
+8)which of the following returns a value of 2?,a. 10 – 8*,b. 8 % 3*,c. -10,d. 30 % 2
+9)Which of the following is branching logic?,a. Switch(){};*,b. if(){}else{};*,c. Do while();,d. ForEach();
+10)Which of the following is a logical operator?,a. || &&*,b. !^*,c. ==,d. =

@@ -1,7 +1,6 @@
 package Company.object;
 
 import java.io.IOException;
-import java.util.Arrays;
 import java.util.Map;
 
 import Company.abstrac.AbstracCalculate;
@@ -14,14 +13,14 @@ public class Calculate extends Components implements AbstracCalculate {
     }
 
     @Override
-    public int calculateAns(String answer[], Map<String, String> opsiAns) {
-    
-        if (opsiAns.get(answer[0]) == null && opsiAns.get(answer[1]) == null) {
+    public int calculateAns1(String answer[], Map<String, String> opsiAns) {
+        
+        if (opsiAns.get(answer[0]) == null) {
             System.out.println("Wrong");
-        } else if (opsiAns.get(answer[0]).endsWith("*") && opsiAns.get(answer[1]).endsWith("*")) {
+        } else if (opsiAns.get(answer[0]).endsWith("*")) {
             System.out.println("correct");
             this.correct++;
-        } else if (!opsiAns.get(answer[0]).endsWith("*") && !opsiAns.get(answer[1]).endsWith("*")) {
+        } else if (!opsiAns.get(answer[0]).endsWith("*")) {
             System.out.println("wrong");
         }
         return getcorrect();
@@ -35,6 +34,20 @@ public class Calculate extends Components implements AbstracCalculate {
     @Override
     public int getcorrect() {
         return this.correct;
+    }
+
+    @Override
+    public int calculateAns2(String[] answer, Map<String, String> opsiAns) {
+        
+        if (opsiAns.get(answer[0]) == null && opsiAns.get(answer[1]) == null) {
+            System.out.println("Wrong");
+        } else if (opsiAns.get(answer[0]).endsWith("*") && opsiAns.get(answer[1]).endsWith("*")) {
+            System.out.println("correct");
+            this.correct++;
+        } else if (!opsiAns.get(answer[0]).endsWith("*") && !opsiAns.get(answer[1]).endsWith("*")) {
+            System.out.println("wrong");
+        }
+        return getcorrect();
     }
 
 }

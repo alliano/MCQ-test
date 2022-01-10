@@ -74,7 +74,8 @@ public class Components extends Questions{
 
     public void loopQustions(List<List<String>> qusestions) throws IOException {
         Map<String, String> opsiAns = new HashMap<>();
-        String[] arrAns = new String[2];
+        String[] arrAns1 = new String[1];
+        String[] arrAns2 = new String[2];
         Calculate calculate = new Calculate("");
         for (int i = 0; i < qusestions.size(); i++) {
 
@@ -95,13 +96,24 @@ public class Components extends Questions{
             System.out.println(qusestions.get(i).get(4).endsWith("*") ? qusestions.get(i).get(4).replace("*", " ")
                     : qusestions.get(i).get(4) + "\n");
 
-            System.out.print("answer : ");
-            String answer = terminalInput.nextLine();
-            System.out.print("answer : ");
-            String answer2 = terminalInput.nextLine();
-            arrAns[0] = answer;
-            arrAns[1] = answer2;
-            this.correct = calculate.calculateAns(arrAns, opsiAns);
+
+
+            if (i < 5) {
+                System.out.print("answer : ");
+                String answer = terminalInput.nextLine();
+                arrAns1[0] = answer;
+                this.correct = calculate.calculateAns1(arrAns1, opsiAns);
+            } else{
+                System.out.print("answer : ");
+                String answer = terminalInput.nextLine();
+                System.out.print("answer : ");
+                String answer2 = terminalInput.nextLine();
+                arrAns2[0] = answer;
+                arrAns2[1] = answer2;
+                this.correct = calculate.calculateAns2(arrAns2, opsiAns);
+                        
+                    }
+
         }
         calculate.mesaagge(this.correct);
     }
