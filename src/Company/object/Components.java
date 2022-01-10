@@ -37,7 +37,7 @@ public class Components extends Questions{
         return this.name;
     }
 
-    public void switchChoose() throws IOException {
+    public void switchChoose() throws IOException,Exception {
         System.out.print("\nchoose the module : ");
         String check = terminalInput.nextLine();
         switch (check) {
@@ -72,11 +72,11 @@ public class Components extends Questions{
         }
     }
 
-    public void loopQustions(List<List<String>> qusestions) throws IOException {
+    public void loopQustions(List<List<String>> qusestions) throws IOException,Exception {
         Map<String, String> opsiAns = new HashMap<>();
         String[] arrAns1 = new String[1];
         String[] arrAns2 = new String[2];
-        Calculate calculate = new Calculate("");
+        Calculate calculate = new Calculate();
         for (int i = 0; i < qusestions.size(); i++) {
 
             opsiAns.put("a", qusestions.get(i).get(1));
