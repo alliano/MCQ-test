@@ -33,7 +33,7 @@ public class Components extends Questions{
         this.name = name;
     }
 
-    private String getName() {
+    public String getName() {
         return this.name;
     }
 

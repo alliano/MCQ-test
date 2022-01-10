@@ -31,7 +31,7 @@ public class Calculate extends Components implements AbstracCalculate {
     
     @Override
     public void mesaagge(int correct) {
-        System.out.println("your graded is "+ correct*10+"%");
+        System.out.println("\n"+getName()+" your graded is "+correct*10+"%");
     }
 
     @Override

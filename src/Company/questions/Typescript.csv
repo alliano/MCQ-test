@@ -3,3 +3,7 @@
 3)how to print text to screen ?,a. console.log()*,b. System.out.print(),c .echo,d. sudo systemctl
 4)what is JSON ?,a. javascript Object Notation*,b. Object,b. Prototytpe,d. Arrow function
 5)typescript’s compiler is?,a. JVM,b. Zend enggine,c. Tsc*,d. V8 Enggine 
+6)Which of the following is a logical operator?,a. || &&*,b. !^*,c. ==,d. =
+7)which of the following returns a value of 2?,a. 10 – 8*,b. 8 % 3*,c. -10,d. 30 % 2
+8)Which of the following is branching logic?,a. Switch(){};*,b. if(){}else{};*,c. Do while();,d. ForEach();
+9)which of the following is an arithmetic operator?,a. + -*,b. %*,c. !=,d. ===
