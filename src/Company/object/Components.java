@@ -10,6 +10,11 @@ public class Components extends Questions{
     private String name;
     private int correct;
     private Scanner terminalInput = new Scanner(System.in);
+
+    public Components() throws Exception {
+        super();
+    }
+
     public Components(String questions) throws IOException {
         super(questions);
     }
@@ -33,7 +38,7 @@ public class Components extends Questions{
     }
 
     public void switchChoose() throws IOException {
-        System.out.print("choose the module : ");
+        System.out.print("\nchoose the module : ");
         String check = terminalInput.nextLine();
         switch (check) {
             case "1":
@@ -44,13 +49,22 @@ public class Components extends Questions{
             
                 break;
             case "2":
-                System.out.println("OOP java");
+                System.out.println("\nOOP java");
+                Questions pertanyaan2 = new Questions("OOP-java");
+                List<List<String>> data2 = pertanyaan2.getAllquestions();
+                loopQustions(data2);
                 break;
             case "3":
                 System.out.println("typescript");
+                Questions pertanyaan3 = new Questions("Typescript");
+                List<List<String>> data3 = pertanyaan3.getAllquestions();
+                loopQustions(data3);
                 break;
             case "4":
                 System.out.println("Express with TS");
+                Questions pertanyaan4 = new Questions("ExpresTs");
+                List<List<String>> data4 = pertanyaan4.getAllquestions();
+                loopQustions(data4);
                 break;
             default:
                 System.out.println("please choose 1 beetwen 4");
@@ -60,6 +74,7 @@ public class Components extends Questions{
 
     public void loopQustions(List<List<String>> qusestions) throws IOException {
         Map<String, String> opsiAns = new HashMap<>();
+        String[] arrAns = new String[2];
         Calculate calculate = new Calculate("");
         for (int i = 0; i < qusestions.size(); i++) {
 
@@ -82,7 +97,11 @@ public class Components extends Questions{
 
             System.out.print("answer : ");
             String answer = terminalInput.nextLine();
-            this.correct = calculate.calculateAns(answer, opsiAns);
+            System.out.print("answer : ");
+            String answer2 = terminalInput.nextLine();
+            arrAns[0] = answer;
+            arrAns[1] = answer2;
+            this.correct = calculate.calculateAns(arrAns, opsiAns);
         }
         calculate.mesaagge(this.correct);
     }

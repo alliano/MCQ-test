@@ -7,8 +7,8 @@ public class Main extends Components{
     public Main(String questions) throws IOException {
         super(questions);
     }
-    public static void main(String[] args) throws IOException {
-        Components components = new Components("");
+    public static void main(String[] args) throws Exception {
+        Components components = new Components();
         components.setName();
         components.listModule();
         components.switchChoose();

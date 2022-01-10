@@ -6,7 +6,7 @@ import java.util.Map;
  */
 public interface AbstracCalculate {
 
-    public int calculateAns(String answer, Map<String, String> opsiAns);
+    public int calculateAns(String[] answer, Map<String, String> opsiAns);
 
     public void mesaagge(int correct);
 

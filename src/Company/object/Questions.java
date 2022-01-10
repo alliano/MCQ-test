@@ -14,19 +14,24 @@ import java.util.StringTokenizer;
 public class Questions {
     private String question;
     private List<List<String>> returnQuestions;
-    private String path = System.getProperty("user.dir");
+    private static String path = System.getProperty("user.dir");
+
+    public Questions(){
+        this.question = "Basicjava";
+    }
 
     public Questions(String questions) throws IOException {
         this.question = questions;
         this.returnQuestions = new ArrayList<>();
-        data();
+        loopArrList();
     }
 
     private void getQuestion() throws IOException {
         FileReader fileReader;
         BufferedReader bufferedReader;
+        System.out.println(path);
         try {
-            fileReader = new FileReader(this.path + "/src/Company/questions/" + this.question + ".csv");
+            fileReader = new FileReader(path + "/src/Company/questions/" + this.question + ".csv");
             bufferedReader = new BufferedReader(fileReader);
         } catch (Exception e) {
             System.out.println("lagi error " + e);
@@ -53,13 +58,16 @@ public class Questions {
         return this.returnQuestions;
     }
 
-    public void data() throws IOException {
+    public void loopArrList() throws IOException {
         
-        // Path path = Paths.get("./"+this.question+".csv");
+        // Path path = Paths.get(Questions.path + "/src/Company/questions/"+this.question+".csv");
+
+        // System.out.println(Files.lines(path).count());
+
         // long lines = Files.lines(path).count();
         // for (int i = 0; i < lines; i++) {
         //     this.returnQuestions.add(new ArrayList<>());
-        // } 
+        // }
         FileReader fileReader;
         BufferedReader bufferedReader;
         try {
