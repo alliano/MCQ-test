@@ -23,9 +23,7 @@ public class Components extends Questions{
         System.out.println("\nwelcome " + getName() + "\n");
         System.out.println("***List Module***\n");
         System.out.println("1)Basic java");
-        System.out.println("2)OOP java");
-        System.out.println("3)typescript");
-        System.out.println("4)Express with TS");
+        System.out.println("2)typescript");
     }
     public void setName() {
         System.out.print("\ninput your name : ");
@@ -46,25 +44,12 @@ public class Components extends Questions{
                 Questions pertanyaan = new Questions("Basicjava");
                 List<List<String>> data = pertanyaan.getAllquestions();
                 loopQustions(data);
-            
                 break;
             case "2":
-                System.out.println("\nOOP java");
-                Questions pertanyaan2 = new Questions("OOP-java");
-                List<List<String>> data2 = pertanyaan2.getAllquestions();
-                loopQustions(data2);
-                break;
-            case "3":
                 System.out.println("typescript");
                 Questions pertanyaan3 = new Questions("Typescript");
                 List<List<String>> data3 = pertanyaan3.getAllquestions();
                 loopQustions(data3);
-                break;
-            case "4":
-                System.out.println("Express with TS");
-                Questions pertanyaan4 = new Questions("ExpresTs");
-                List<List<String>> data4 = pertanyaan4.getAllquestions();
-                loopQustions(data4);
                 break;
             default:
                 System.out.println("please choose 1 beetwen 4");
@@ -103,7 +88,10 @@ public class Components extends Questions{
                 String answer = terminalInput.nextLine();
                 arrAns1[0] = answer;
                 this.correct = calculate.calculateAns1(arrAns1, opsiAns);
-            } else{
+            } else {
+                System.out.println("-------------------------------");
+                System.out.println("---this is multiple answear ---");
+                System.out.println("-------------------------------");
                 System.out.print("answer : ");
                 String answer = terminalInput.nextLine();
                 System.out.print("answer : ");

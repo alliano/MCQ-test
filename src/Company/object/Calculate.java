@@ -45,11 +45,13 @@ public class Calculate extends Components implements AbstracCalculate {
         try {
             if (opsiAns.get(answer[0]) == null && opsiAns.get(answer[1]) == null) {
                 System.out.println("Wrong");
+            } else if (opsiAns.get(answer[0]) == opsiAns.get(answer[1])) {
+                System.out.println("wrong");
+            } else if (!opsiAns.get(answer[0]).endsWith("*") && !opsiAns.get(answer[1]).endsWith("*")) {
+                System.out.println("wrong");
             } else if (opsiAns.get(answer[0]).endsWith("*") && opsiAns.get(answer[1]).endsWith("*")) {
                 System.out.println("correct");
                 this.correct++;
-            } else if (!opsiAns.get(answer[0]).endsWith("*") && !opsiAns.get(answer[1]).endsWith("*")) {
-                System.out.println("wrong");
             }
         } catch (Exception e) {
             //TODO: handle exception
