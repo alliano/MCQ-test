@@ -48,6 +48,7 @@ public class Questions {
             this.returnQuestions.get(index).add(strToken.nextToken());
             index++;
         }
+        // close buffer
         bufferedReader.close();
     }
 

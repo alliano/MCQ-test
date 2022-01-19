@@ -103,7 +103,7 @@ public class Components extends Questions{
                     }
 
         }
-        calculate.mesaagge(this.correct);
+        calculate.mesaagge(this.correct,this.name);
     }
 
 }
