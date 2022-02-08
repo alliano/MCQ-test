@@ -94,7 +94,7 @@ public class Components extends Questions{
                 System.out.print("answer : ");
                 String answer = terminalInput.nextLine();
                 arrAns1[0] = answer;//jwaban user akan di masukan ke dalam arrAns1
-                this.correct = calculate.calculateAns1(arrAns1, opsiAns);//ini akan mengembalikan array 
+                this.correct = calculate.calculateAns1(arrAns1, opsiAns, qusestions);//ini akan mengembalikan array 
             } else {
                 //ini untuk multiple answer
                 System.out.println("-------------------------------");
