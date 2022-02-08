@@ -7,6 +7,7 @@ import Company.abstrac.AbstracCalculate;
 
 public class Calculate extends Components implements AbstracCalculate {
     private int correct;
+    private int wrong;
 
     public Calculate()throws Exception {
         super();
@@ -16,39 +17,50 @@ public class Calculate extends Components implements AbstracCalculate {
         super(questions);
     }
 
+    //method kalkulaisi jawaban user 
     @Override
-    public int calculateAns1(String answer[], Map<String, String> opsiAns) {
-            if (opsiAns.get(answer[0]) == null) {
+    public int[] calculateAns1(String answer[], Map<String, String> opsiAns) {
+            if (opsiAns.get(answer[0]) == null) {//jik user milih selain opsi abcd
                 System.out.println("Wrong");
-            } else if (opsiAns.get(answer[0]).endsWith("*")) {
+                this.wrong++;
+            } else if (opsiAns.get(answer[0]).endsWith("*")) {//jika user memnilih jawaban yang benar
                 System.out.println("correct");
                 this.correct++;
-            } else if (!opsiAns.get(answer[0]).endsWith("*")) {
+            } else if (!opsiAns.get(answer[0]).endsWith("*")) {//jika user memilih jawaban yang salah
                 System.out.println("wrong");
+                this.wrong++;
             }
-        return getcorrect();
+        return getcorrect();//mengembalikan jumlah jawaban yang benar
     }
     
+    //menampilkan pesan jika sudah selesai pertanyaanya
     @Override
-    public void mesaagge(int correct,String name) {
-        System.out.println("\n"+"Hi "+name+" your graded is "+correct*10+"%");
+    public void mesaagge(int[] result,String name) {
+        System.out.println("\n"+"Hi " + name + " you wrong " + result[1] + " and correct " + result[0] + " your graded is " + result[0]*10+"%");
     }
 
     @Override
-    public int getcorrect() {
-        return this.correct;
+    public int[] getcorrect() {
+        int[] result = new int[2];
+        result[0] = this.correct;
+        result[1] = this.wrong;
+        return result;
     }
 
+    // for multiple answer
     @Override
-    public int calculateAns2(String[] answer, Map<String, String> opsiAns) {
+    public int[] calculateAns2(String[] answer, Map<String, String> opsiAns) {
 
         try {
             if (opsiAns.get(answer[0]) == null && opsiAns.get(answer[1]) == null) {
                 System.out.println("Wrong");
+                this.wrong++;
             } else if (opsiAns.get(answer[0]) == opsiAns.get(answer[1])) {
                 System.out.println("wrong");
+                this.wrong++;
             } else if (!opsiAns.get(answer[0]).endsWith("*") && !opsiAns.get(answer[1]).endsWith("*")) {
                 System.out.println("wrong");
+                this.wrong++;
             } else if (opsiAns.get(answer[0]).endsWith("*") && opsiAns.get(answer[1]).endsWith("*")) {
                 System.out.println("correct");
                 this.correct++;
