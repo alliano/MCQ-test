@@ -6,11 +6,20 @@ import java.util.List;
 import java.util.Map;
 import java.util.Scanner;
 
+/****************************************
+ * this class extends class Questions   *
+ *                                      *
+ * it's mean the Components class will  *
+ * can use property and ,method that    *
+ * there in paren class (Questions)     *
+ ****************************************/
+
 public class Components extends Questions{
     private String name;
     private int[] correct;
     private Scanner terminalInput = new Scanner(System.in);
 
+    // overide constructor
     public Components() throws Exception {
         super();
     }
@@ -33,6 +42,7 @@ public class Components extends Questions{
         this.name = name;
     }
 
+    // get name user
     public String getName() {
         return this.name;
     }
@@ -77,16 +87,11 @@ public class Components extends Questions{
 
             System.out.println("\n");
             // menampilkan opsi ke layar tap jika opsi itu mengandung * di akhir kata maka * akan di replace dengan string kosong
-            System.out.println(qusestions.get(i).get(0).endsWith("*") ? qusestions.get(i).get(0).replace("*", " ")
-                    : qusestions.get(i).get(0));
-            System.out.println(qusestions.get(i).get(1).endsWith("*") ? qusestions.get(i).get(1).replace("*", " ")
-                    : qusestions.get(i).get(1));
-            System.out.println(qusestions.get(i).get(2).endsWith("*") ? qusestions.get(i).get(2).replace("*", " ")
-                    : qusestions.get(i).get(2));
-            System.out.println(qusestions.get(i).get(3).endsWith("*") ? qusestions.get(i).get(3).replace("*", " ")
-                    : qusestions.get(i).get(3));
-            System.out.println(qusestions.get(i).get(4).endsWith("*") ? qusestions.get(i).get(4).replace("*", " ")
-                    : qusestions.get(i).get(4) + "\n");
+            System.out.println(qusestions.get(i).get(0).endsWith("*")  ? qusestions.get(i).get(0).replace("*", " "): qusestions.get(i).get(0));
+            System.out.println(qusestions.get(i).get(1).endsWith("*")  ? qusestions.get(i).get(1).replace("*", " "): qusestions.get(i).get(1));
+            System.out.println(qusestions.get(i).get(2).endsWith("*")  ? qusestions.get(i).get(2).replace("*", " "): qusestions.get(i).get(2));
+            System.out.println(qusestions.get(i).get(3).endsWith("*")  ? qusestions.get(i).get(3).replace("*", " "): qusestions.get(i).get(3));
+            System.out.println(qusestions.get(i).get(4).endsWith("*")  ? qusestions.get(i).get(4).replace("*", " "): qusestions.get(i).get(4) + "\n");
 
 
 
@@ -94,7 +99,7 @@ public class Components extends Questions{
                 System.out.print("answer : ");
                 String answer = terminalInput.nextLine();
                 arrAns1[0] = answer;//jwaban user akan di masukan ke dalam arrAns1
-                this.correct = calculate.calculateAns1(arrAns1, opsiAns, qusestions);//ini akan mengembalikan array 
+                this.correct = calculate.calculateAns1(arrAns1, opsiAns);//ini akan mengembalikan array 
             } else {
                 //ini untuk multiple answer
                 System.out.println("-------------------------------");
