@@ -1,3 +1,9 @@
+/**********************************************
+ * this programs under development by alliano *
+ * ********************************************
+ */
+
+
 package Company.object;
 
 import java.io.IOException;
@@ -9,7 +15,7 @@ import java.util.Scanner;
 /****************************************
  * this class extends class Questions   *
  *                                      *
- * it's mean the Components class will  *
+ * it's mean the Components class       *
  * can use property and ,method that    *
  * there in paren class (Questions)     *
  ****************************************/
@@ -37,6 +43,7 @@ public class Components extends Questions{
     }
     //mengambil nama-
     public void setName() {
+
         System.out.print("\ninput your name : ");
         String name = terminalInput.nextLine();
         this.name = name;
@@ -48,29 +55,51 @@ public class Components extends Questions{
     }
 
     //mengambil module bersasarkan pilihan user
-    public void switchChoose() throws IOException,Exception {
-        System.out.print("\nchoose the module : ");
-        String check = terminalInput.nextLine();
-        switch (check) {
-            case "1":
-                System.out.println("\nBasic java");
-                Questions pertanyaan = new Questions("Basicjava");
-                List<List<String>> data = pertanyaan.getAllquestions();//megambil pertanyaan bedasarkan pilihan user
-                loopQustions(data);//karna pertnayanya berbentuk array list maka pertannan akan di looping sebelum di tampilkan ke layar
-                break;
-            case "2":
-                System.out.println("typescript");
-                Questions pertanyaan3 = new Questions("Typescript");
-                List<List<String>> data3 = pertanyaan3.getAllquestions();
-                loopQustions(data3);
-                break;
-            default:
-                System.out.println("please choose 1 beetwen 4");
-                break;
+    /**
+     * method for take user's choose
+     * 
+     * @throws IOException
+     * @throws Exception
+     */
+    public void switchChoose() throws IOException, Exception {
+        boolean istrue = true;
+        while (istrue) {
+            System.out.print("\nchoose the module : ");
+            String check = terminalInput.nextLine();
+            switch (check) {
+                case "1":
+                    istrue = false;
+                    System.out.println("\n***************");
+                    System.out.println("***Basic java****");
+                    System.out.println("***************");
+                    Questions pertanyaan = new Questions("Basicjava");
+                    List<List<String>> data = pertanyaan.getAllquestions();//megambil pertanyaan bedasarkan pilihan user
+                    loopQustions(data);//karna pertnayanya berbentuk array list maka pertannan akan di looping sebelum di tampilkan ke layar
+                    break;
+                case "2":
+                    istrue = false;
+                    System.out.println("typescript");
+                    Questions pertanyaan3 = new Questions("Typescript");
+                    List<List<String>> data3 = pertanyaan3.getAllquestions();
+                    loopQustions(data3);
+                    break;
+                default:
+                    istrue = true;
+                    System.out.println("please choose 1 beetwen 2 (basic java or typescript)");
+                    break;
+            }
         }
-    }
+        
+        
+    } 
 
-    public void loopQustions(List<List<String>> qusestions) throws IOException,Exception {
+    /**
+     * this method will loop question until the questons empty
+     * @param qusestions
+     * @throws IOException
+     * @throws Exception
+     */
+    public void loopQustions(List<List<String>> qusestions) throws IOException, Exception {
         Map<String, String> opsiAns = new HashMap<>();//membuat array asosiatf kek di php Exp: $data = ["nama" => "alliano"] klo di PHP
         String[] arrAns1 = new String[1];
         String[] arrAns2 = new String[2];
@@ -83,17 +112,18 @@ public class Components extends Questions{
             opsiAns.put("c", qusestions.get(i).get(3));
             opsiAns.put("d", qusestions.get(i).get(4));
 
-
-
             System.out.println("\n");
             // menampilkan opsi ke layar tap jika opsi itu mengandung * di akhir kata maka * akan di replace dengan string kosong
-            System.out.println(qusestions.get(i).get(0).endsWith("*")  ? qusestions.get(i).get(0).replace("*", " "): qusestions.get(i).get(0));
-            System.out.println(qusestions.get(i).get(1).endsWith("*")  ? qusestions.get(i).get(1).replace("*", " "): qusestions.get(i).get(1));
-            System.out.println(qusestions.get(i).get(2).endsWith("*")  ? qusestions.get(i).get(2).replace("*", " "): qusestions.get(i).get(2));
-            System.out.println(qusestions.get(i).get(3).endsWith("*")  ? qusestions.get(i).get(3).replace("*", " "): qusestions.get(i).get(3));
-            System.out.println(qusestions.get(i).get(4).endsWith("*")  ? qusestions.get(i).get(4).replace("*", " "): qusestions.get(i).get(4) + "\n");
-
-
+            System.out.println(qusestions.get(i).get(0).endsWith("*") ? qusestions.get(i).get(0).replace("*", " ")
+                    : qusestions.get(i).get(0));
+            System.out.println(qusestions.get(i).get(1).endsWith("*") ? qusestions.get(i).get(1).replace("*", " ")
+                    : qusestions.get(i).get(1));
+            System.out.println(qusestions.get(i).get(2).endsWith("*") ? qusestions.get(i).get(2).replace("*", " ")
+                    : qusestions.get(i).get(2));
+            System.out.println(qusestions.get(i).get(3).endsWith("*") ? qusestions.get(i).get(3).replace("*", " ")
+                    : qusestions.get(i).get(3));
+            System.out.println(qusestions.get(i).get(4).endsWith("*") ? qusestions.get(i).get(4).replace("*", " ")
+                    : qusestions.get(i).get(4) + "\n");
 
             if (i < 5) {
                 System.out.print("answer : ");
@@ -112,11 +142,11 @@ public class Components extends Questions{
                 arrAns2[0] = answer;
                 arrAns2[1] = answer2;
                 this.correct = calculate.calculateAns2(arrAns2, opsiAns);
-                        
-                    }
+
+            }
 
         }
-        calculate.mesaagge(this.correct,this.name);
+        calculate.mesaagge(this.correct, this.name);
     }
 
 }
