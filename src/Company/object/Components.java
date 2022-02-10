@@ -25,7 +25,10 @@ public class Components extends Questions{
     private int[] correct;
     private Scanner terminalInput = new Scanner(System.in);
 
-    // overide constructor
+    /**
+     * this is overide constructor
+     * @throws Exception
+     */
     public Components() throws Exception {
         super();
     }
@@ -34,14 +37,19 @@ public class Components extends Questions{
         super(questions);
     }
 
-    //menampikan list module
+    /**
+     * menampikan list module | show list of modules
+     */
     public void listModule() {
         System.out.println("\nwelcome " + getName() + "\n");
         System.out.println("***List Module***\n");
         System.out.println("1)Basic java");
         System.out.println("2)typescript");
     }
-    //mengambil nama-
+    
+    /**
+     * mengambil nama | take name of user
+     */
     public void setName() {
 
         System.out.print("\ninput your name : ");
@@ -54,9 +62,9 @@ public class Components extends Questions{
         return this.name;
     }
 
-    //mengambil module bersasarkan pilihan user
     /**
      * method for take user's choose
+     * mengambil module bersasarkan pilihan user | take the module based user's choose
      * 
      * @throws IOException
      * @throws Exception
@@ -73,8 +81,13 @@ public class Components extends Questions{
                     System.out.println("***Basic java****");
                     System.out.println("***************");
                     Questions pertanyaan = new Questions("Basicjava");
-                    List<List<String>> data = pertanyaan.getAllquestions();//megambil pertanyaan bedasarkan pilihan user
-                    loopQustions(data);//karna pertnayanya berbentuk array list maka pertannan akan di looping sebelum di tampilkan ke layar
+                    
+                    // megambil pertanyaan bedasarkan pilihan user | take the questions based user's choose
+                    List<List<String>> data = pertanyaan.getAllquestions();
+
+
+                    // karna pertnayanya berbentuk array list maka pertannan akan di looping sebelum ditampil kan ke layar | cause the questions is array list then the questions will looping before show to screen
+                    loopQustions(data);
                     break;
                 case "2":
                     istrue = false;
@@ -100,36 +113,46 @@ public class Components extends Questions{
      * @throws Exception
      */
     public void loopQustions(List<List<String>> qusestions) throws IOException, Exception {
-        Map<String, String> opsiAns = new HashMap<>();//membuat array asosiatf kek di php Exp: $data = ["nama" => "alliano"] klo di PHP
+
+        //membuat array asosiatf kek di php Exp: $data = ["nama" => "alliano"] klo di PHP
+        Map<String, String> opsiAns = new HashMap<>();
         String[] arrAns1 = new String[1];
         String[] arrAns2 = new String[2];
-        Calculate calculate = new Calculate();//instance object calculate | nanti ini akan digunaka untuk meng kalkulasi hasil dari user
+
+        // instance object calculate | nanti ini akan digunaka untuk meng kalkulasi hasil dari user hasil dari user
+        Calculate calculate = new Calculate();
         for (int i = 0; i < qusestions.size(); i++) {
 
-            //mengambil oipsi dari soal dan si sinmpan di dalam variable opsiAns
+            //mengambil oipsi dari soal dan sinmpan di dalam variable opsiAns | take options of questions and save in to opsiAns variable
             opsiAns.put("a", qusestions.get(i).get(1));
             opsiAns.put("b", qusestions.get(i).get(2));
             opsiAns.put("c", qusestions.get(i).get(3));
             opsiAns.put("d", qusestions.get(i).get(4));
 
             System.out.println("\n");
-            // menampilkan opsi ke layar tap jika opsi itu mengandung * di akhir kata maka * akan di replace dengan string kosong
-            System.out.println(qusestions.get(i).get(0).endsWith("*") ? qusestions.get(i).get(0).replace("*", " ")
-                    : qusestions.get(i).get(0));
-            System.out.println(qusestions.get(i).get(1).endsWith("*") ? qusestions.get(i).get(1).replace("*", " ")
-                    : qusestions.get(i).get(1));
-            System.out.println(qusestions.get(i).get(2).endsWith("*") ? qusestions.get(i).get(2).replace("*", " ")
-                    : qusestions.get(i).get(2));
-            System.out.println(qusestions.get(i).get(3).endsWith("*") ? qusestions.get(i).get(3).replace("*", " ")
-                    : qusestions.get(i).get(3));
-            System.out.println(qusestions.get(i).get(4).endsWith("*") ? qusestions.get(i).get(4).replace("*", " ")
-                    : qusestions.get(i).get(4) + "\n");
+
+            // menampilkan opsi ke layar tap jika opsi itu mengandung * di akhir kata maka * akan di replace dengan string kosong | show options to screen but if the answears contain * then the caracter * will replace with empty string
+            System.out.println(qusestions.get(i).get(0).endsWith("*") ? qusestions.get(i).get(0).replace("*", " ") : qusestions.get(i).get(0));
+            System.out.println(qusestions.get(i).get(1).endsWith("*") ? qusestions.get(i).get(1).replace("*", " ") : qusestions.get(i).get(1));
+            System.out.println(qusestions.get(i).get(2).endsWith("*") ? qusestions.get(i).get(2).replace("*", " ") : qusestions.get(i).get(2));
+            System.out.println(qusestions.get(i).get(3).endsWith("*") ? qusestions.get(i).get(3).replace("*", " ") : qusestions.get(i).get(3));
+            System.out.println(qusestions.get(i).get(4).endsWith("*") ? qusestions.get(i).get(4).replace("*", " ") : qusestions.get(i).get(4) + "\n");
 
             if (i < 5) {
                 System.out.print("answer : ");
                 String answer = terminalInput.nextLine();
-                arrAns1[0] = answer;//jwaban user akan di masukan ke dalam arrAns1
-                this.correct = calculate.calculateAns1(arrAns1, opsiAns);//ini akan mengembalikan array 
+
+                // this loop will run if user choose the options which not available
+                while (isInclude(answer, "a", "b", "c", "d")) {
+                    System.out.println("\nyour choose is not available in our options please choose a,b,c,d\n");
+                    System.out.print("answer : ");
+                    answer = terminalInput.nextLine();
+                }
+                // jwaban user akan di masukan ke dalam arrAns1 | user answear will entered into variable arrAns1 with index 0
+                arrAns1[0] = answer;
+
+                // ini akan mengembalikan array | this will return array 
+                this.correct = calculate.calculateAns1(arrAns1, opsiAns);
             } else {
                 //ini untuk multiple answer
                 System.out.println("-------------------------------");
@@ -139,14 +162,63 @@ public class Components extends Questions{
                 String answer = terminalInput.nextLine();
                 System.out.print("answer : ");
                 String answer2 = terminalInput.nextLine();
+                String ans[] = new String[2];
+                ans[0] = answer;
+                ans[1] = answer2;
+
+                // thuis loop will run if user pick the options which not available
+                while (isInclude(ans, "a", "b", "c", "d")) {
+                    System.out.println("\nyour choose is not available in our options please choose a,b,c,d\n");
+                    System.out.print("answer : ");
+                    answer = terminalInput.nextLine();
+                    System.out.print("answer : ");
+                    answer2 = terminalInput.nextLine();
+                    ans[0] = answer;
+                    ans[1] = answer2;
+                }
                 arrAns2[0] = answer;
                 arrAns2[1] = answer2;
                 this.correct = calculate.calculateAns2(arrAns2, opsiAns);
-
             }
 
         }
         calculate.mesaagge(this.correct, this.name);
+    }
+    
+    /**
+     * this is polimorpisem 
+     * this method for check user answear available in our options or not
+     * if user choose the options which not available then this method will retun value true(for run the loop)
+     * is user choose the options available then this method will return false(for stop the loop)
+     * @param input
+     * @param rest
+     * @return
+     */
+    private static boolean isInclude(String input, String... rest) {
+        for (String value : rest) {
+            if (Character.toString(input.charAt(0)).equalsIgnoreCase(value)) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    /**
+     * this is polimorpisem
+     * this method for check user answear available in our options or not
+     * if user choose the options which not available then this method will retun value true(for run the loop)
+     * is user choose the options available then this method will return false(for stop the loop)
+     * @param input
+     * @param rest
+     * @return
+     */
+    private static boolean isInclude(String[] input, String... rest) {
+        for (String value : rest) {
+            if (input[0].equalsIgnoreCase(value) || input[1].equalsIgnoreCase(value)){
+                return false;
+            }
+        }
+        return true;
     }
 
 }

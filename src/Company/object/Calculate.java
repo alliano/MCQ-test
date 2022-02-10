@@ -1,3 +1,8 @@
+/**********************************************
+ * this programs under development by alliano *
+ * ********************************************
+ */
+
 package Company.object;
 
 import java.io.IOException;
@@ -7,21 +12,25 @@ import java.util.Map;
 import Company.abstrac.AbstracCalculate;
 
 
-/* this class implement interface/abstrac form class AbstracCalculate */
+/**
+ * this class implement interface/abstrac form class AbstracCalculate
+ */
 public class Calculate extends Components implements AbstracCalculate {
     private int correct;//this variable for storage corect answear (just point)
     private int wrong;//same like above //storage wrong points
 
-    //overide constructor
+    /**
+     * overide constructor calculate
+     * 
+     * @throws Exception
+     */
     public Calculate()throws Exception {
         super();
     }
 
     public Calculate(String questions) throws IOException {
         super(questions);
-    }
-
-    //method kalkulaisi jawaban user 
+    } 
     
     /**
      * this class recive data
@@ -39,21 +48,28 @@ public class Calculate extends Components implements AbstracCalculate {
                 isValid[0] = opsiAns.get(ops[i]).replace("*", " ");
             }
         }
-
-            if (opsiAns.get(answer[0]) == null) {//jik user milih selain opsi abcd
+            // jik user milih selain opsi abcd | if user pick else abcd or user pick not available options
+            if (opsiAns.get(answer[0]) == null) {
                 System.out.println("\nWrong the correct answear is " + isValid[0]);
                 this.wrong++;
-            } else if (opsiAns.get(answer[0]).endsWith("*")) {//jika user memnilih jawaban yang benar
+
+                // jika user memnilih jawaban yang benar | if user pick the correct answer
+            } else if (opsiAns.get(answer[0]).endsWith("*")) {
                 System.out.println("correct");
                 this.correct++;
-            } else if (!opsiAns.get(answer[0]).endsWith("*")) {//jika user memilih jawaban yang salah
+
+                // jika user memilih jawaban yang salah | if user pick the wrong answer
+            } else if (!opsiAns.get(answer[0]).endsWith("*")) {
                 System.out.println("Wrong the correct answear is " + isValid[0]);
                 this.wrong++;
             }
-        return getcorrect();//mengembalikan jumlah jawaban yang benar
+        // mengembalikan jumlah jawaban yang benar dan salah | this method will return the point of user
+        return getcorrect();
     }
     
-    //menampilkan pesan jika sudah selesai pertanyaanya
+    /**
+     * menampilkan pesan jika sudah selesai pertanyaanya | this method will show message if the answear have answered
+     */
     @Override
     public void mesaagge(int[] result,String name) {
         System.out.println("\n"+"Hi " + name + " you wrong " + result[1] + " and correct " + result[0] + " your graded is " + result[0]*10+"%");
@@ -73,7 +89,9 @@ public class Calculate extends Components implements AbstracCalculate {
         return result;
     }
 
-    // for multiple answer
+    /**
+     * for multiple answer
+     */
     @Override
     public int[] calculateAns2(String[] answer, Map<String, String> opsiAns) {
         List<String> isValid = new ArrayList<>();

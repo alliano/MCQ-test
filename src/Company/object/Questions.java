@@ -1,3 +1,8 @@
+/**********************************************
+ * this programs under development by alliano *
+ * ********************************************
+ */
+
 package Company.object;
 
 import java.io.BufferedReader;
@@ -10,6 +15,10 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.StringTokenizer;
 
+/**
+ * this class for read file csv 
+ * and there are some moetods for get questions
+ */
 public class Questions {
     private String question;
     private List<List<String>> returnQuestions;
@@ -27,25 +36,37 @@ public class Questions {
         loopArrList();
     }
 
-    //method untuk mengamil pertanyaan dari file csv
+    //method untuk mengamil pertanyaan dari file csv | method for read file csv 
     private void getQuestion() throws IOException {
         FileReader fileReader;
         BufferedReader bufferedReader;
         try {
-            fileReader = new FileReader(path + "/src/Company/questions/" + this.question + ".csv");//membaca file csv berdasarkan plihan user(variable this.question)
+
+            // membaca file csv berdasarkan plihan user(variable this.question) | read csv file based user choose( variable this.question)
+            fileReader = new FileReader(path + "/src/Company/questions/" + this.question + ".csv");
             bufferedReader = new BufferedReader(fileReader);
         } catch (Exception e) {
+            // show to screen if there arror
             System.out.println("lagi error " + e);
             return;
         }
-        String data = bufferedReader.readLine();//membaca per baris dari buffer reader
-        StringTokenizer strToken = new StringTokenizer(data, ",");//membaca baris dari variabel data dan jika ketemu koma maka akan di enter
+        // membaca per baris dari buffer reader | read per line of buffer reader 
+        String data = bufferedReader.readLine();
+
+        // membaca baris dari variabel data dan jika ketemu koma maka akan di enter | read a line data variable and if find character coma (,) then will enter
+        StringTokenizer strToken = new StringTokenizer(data, ",");
         int index = 0;
         while (data != null) {
             strToken = new StringTokenizer(data, ",");
             data = bufferedReader.readLine();
-            //retun question ini bernilai array list kosong kosog 
-            //disini retunQuestion akan di soal berdasarkan index
+            
+            /**
+             * retun question ini bernilai array list kosong kosog
+             * this return questions is worth an empty array list
+             * 
+             * disini retunQuestion akan di isi soal berdasarkan index
+             * here the returnQuestion will be field with question based on index
+             */
             this.returnQuestions.get(index).add(strToken.nextToken());
             this.returnQuestions.get(index).add(strToken.nextToken());
             this.returnQuestions.get(index).add(strToken.nextToken());
@@ -62,14 +83,26 @@ public class Questions {
         return this.returnQuestions;
     }
 
-    //me looping returnArray list berdasarkan banyak baris di file csv
+    
+
+    /**
+     * method looping returnArray list berdasarkan banyak baris di file csv
+     * this method will loop property returnQuestions and the property
+     * returnQuestions will field empty array list
+     * 
+     * @throws IOException
+     */
     public void loopArrList() throws IOException {
         
-        Path path = Paths.get(Questions.path + "/src/Company/questions/"+this.question+".csv");//mengambil path lokasi saat ini dari direk tori home system
+        // mengambil path lokasi saat ini dari direk tori home system | take the path location now from directory home/system
+        Path path = Paths.get(Questions.path + "/src/Company/questions/"+this.question+".csv");
 
-        long lines = Files.lines(path).count();//mengabil bayak nya baris dari file csv
+        // mengabil bayak nya baris dari file csv | fetch multiple lines from csv file
+        long lines = Files.lines(path).count();
         for (int i = 0; i < lines; i++) {
-            this.returnQuestions.add(new ArrayList<>());//menambahkan array list berdasarkan bnyknya baris di file csv
+
+            // menambahkan array list berdasarkan bnyknya baris di file csv | add the array list in to property retunQuestions 
+            this.returnQuestions.add(new ArrayList<>());
         }
      
     }
