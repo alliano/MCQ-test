@@ -72,7 +72,7 @@ public class Calculate extends Components implements AbstracCalculate {
      */
     @Override
     public void mesaagge(int[] result,String name) {
-        System.out.println("\n"+"Hi " + name + " you wrong " + result[1] + " and correct " + result[0] + " your graded is " + result[0]*10+"%");
+        System.out.println("\n"+ name + " you answered " + result[0] + " Questions Right ," + result[1] + " Questions Wrong for a Total of 10 Question your secore is " +  result[0]*10+"%");
     }
 
 
@@ -113,6 +113,9 @@ public class Calculate extends Components implements AbstracCalculate {
                 this.wrong++;
             } else if (!opsiAns.get(answer[0]).endsWith("*") && !opsiAns.get(answer[1]).endsWith("*")) {
                 System.out.println("Wrong " + "the correct answears are "  +  isValid.get(0)  + " and " + isValid.get(1));
+                this.wrong++;
+            }else if(!opsiAns.get(answer[0]).endsWith("*") || !opsiAns.get(answer[1]).endsWith("*")){
+                System.out.println("Wrong " + "the correct answears are " + isValid.get(0) + " and " + isValid.get(1));
                 this.wrong++;
             } else if (opsiAns.get(answer[0]).endsWith("*") && opsiAns.get(answer[1]).endsWith("*")) {
                 System.out.println("correct");

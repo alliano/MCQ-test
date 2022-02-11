@@ -20,7 +20,18 @@ import java.util.Scanner;
  * there in paren class (Questions)     *
  ****************************************/
 
-public class Components extends Questions{
+public class Components extends Questions {
+    /**
+     * this is example for encapsulation or access modifier
+     * 
+     * privat -> it's mean the property or method just can use in class child class can not use 
+     * if child class want to use then need method seter geter
+     *  
+     * protected -> it's mean this property or method can be use in this class and 
+     * child class  
+     * 
+     * public -> it's mean this property or method can use by all class
+     */
     private String name;
     private int[] correct;
     private Scanner terminalInput = new Scanner(System.in);
@@ -52,7 +63,8 @@ public class Components extends Questions{
      */
     public void setName() {
 
-        System.out.print("\ninput your name : ");
+        System.out.print("\nEnter your Name : ");
+        // String abz = "qwertyuiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM";
         String name = terminalInput.nextLine();
         this.name = name;
     }
